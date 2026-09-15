@@ -1,0 +1,80 @@
+#include <iostream.h>
+#include <conio.h>
+
+#define MAX 10  // Max size definition
+
+int a[MAX];
+int top = -1;  // Global top variable
+
+// Push operation
+void push() {
+    int n;
+    cout << "\nEnter the element to push: ";
+    cin >> n;
+
+    if (top == MAX - 1) {
+        cout << "Stack overflow\n";
+    } else {
+        top++;
+        a[top] = n;
+    }
+}
+
+// Pop operation
+void pop() {
+    int d;
+    if (top == -1) {
+        cout << "Stack underflow\n";
+    } else {
+        d = a[top];
+        top--;
+        cout << "\nItem popped is: " << d << endl;
+    }
+}
+
+// Display operation
+void display() {
+    if (top == -1) {
+        cout << "Stack has no element\n";
+    } else {
+        cout << "\nElements in stack: ";
+        for (int i = top; i >= 0; i--) {
+            cout << a[i] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void main() {
+    clrscr();  // Screen clear karne ke liye
+
+    int choice;
+    char ch;
+
+    do {
+        cout << "\n1. Push | 2. Pop | 3. Display";
+        cout << "\nEnter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                push();
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            default:
+                cout << "Invalid choice!\n";
+        }
+
+        cout << "\nDo you want to continue? (Y/y): ";
+        ch = getch();  // Single character read karne ke liye
+        cout << ch << endl;
+
+    } while (ch == 'Y' || ch == 'y');
+
+    getch();  // Final screen hold ke liye
+}
